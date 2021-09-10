@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+<title>Configuration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+
+{% block body %}
+<h2 style="color:blue;">Automate Configuration</h2>
+<br>
+
+<div class="p-3 mb-2 bg-primary text-dark">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <h4>Configure Group of Devices with ConfigFile(Commands) </h4>
+        <ol class="breadcrumb">
+            <form action="{{url_for('automate')}}" method="POST">
+
+                <input type="text" name="config" placeholder="GroupName">
+                <button class="badge rounded-pill bg-info text-dark" type="submit">Configroup</button>
+
+
+                <br>
+                <br>
+                <ol>
+                    <li style="color:red;"><b>Devices Fail to Run Configuration: {{results}}</b></li>
+                    <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+                </ol>
+
+            </form>
+
+
+
+        </ol>
+
+    </nav>
+
+</div>
+<br>
+<div  align="middle">
+
+    <img src="/static/network4.png" width="400" height="200">
+
+</div>
+
+
+
+
+{% endblock %}

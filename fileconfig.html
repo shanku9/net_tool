@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+<title>Configuration File</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+{% block body %}
+<h2 style="color:blue;"> Add Commands for Configuration</h2>
+
+<div class="p-3 mb-2 bg-info text-dark">
+  <form action=" fileconfig" method="POST">
+    <textarea class="table table-bordered border-primary" id="w3review"  name="textbox" rows="15" cols="100">{{ days }}</textarea>
+    <button class="badge rounded-pill bg-info text-dark" type="submit">AddCommandsToTextFile</button>
+
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block title %} DeviceFacts {% endblock %}
+
+
+
+{% block body %}
+
+
+<div class="container" style="margin-top:1px"  >
+  <div class="row">
+    <h1 style="color:blue;"> {{device_name}} Facts</h1>
+    <p style="color:green;"><b>Retrieved From Network Device.</b></p>
+  </div>
+  <div class="row">
+    <h1 style="color:blue;"> Device Info</h1>
+    <table class="table table-hover table-info">
+      <thead>
+      <tr>
+        <th>Vendor</th>
+        <th>OS Version</th>
+        <th>Serial Number</th>
+        <th>Hostname</th>
+        <th>FQDN</th>
+        <th>Uptime</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ facts.facts.vendor }}</td>
+        <td>{{ facts.facts.os_version }}</td>
+        <td>{{ facts.facts.serial_number }}</td>
+        <td>{{ facts.facts.hostname }}</td>
+        <td>{{ facts.facts.fqdn }}</td>
+        <td>{{ facts.facts.uptime }}sec</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="row">
+    <h1 style="color:blue;"> Interface List </h1>
+    <table class="table table-hover table-dark">
+      <thead>
+      <tr>
+        <th>Interface Name</th>
+        <th>Enabled</th>
+        <th>Up</th>
+        <th>Description</th>
+        <th>MAC</th>
+        <th>MTU</th>
+        <th>Speed</th>
+        <th>Last Flapped</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for interface in interface_list %}
+      <tr>
+        <td>{{ interface.name }}</td>
+        <td>{{ interface.enabled }}</td>
+        <td>{{ interface.up }}</td>
+        <td>{{ interface.description }}</td>
+        <td>{{ interface.mac }}</td>
+        <td>{{ interface.mtu }}</td>
+        <td>{{ interface.speed }}</td>
+        <td>{{ interface.last_flapped }}</td>
+
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+  <div class="row">
+    <h1 style="color:blue;"> Device Arp</h1>
+    <table class="table table-hover table-info">
+      <thead>
+      <tr>
+        <th>Interfaces</th>
+        <th>Mac</th>
+        <th>IP</th>
+        <th>Age</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        {% for k in arp_list %}
+        <td style="color:grey;"> <b> {{ k['interface'] }} </b></td>
+        <td style="color:grey;"> <b> {{ k['mac'] }} </b></td>
+        <td style="color:grey;"> <b> {{ k['ip'] }} </b></td>
+        <td style="color:grey;"> <b> {{ k['age'] }} </b></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="row">
+    <h1 style="color:blue;">Device Counters</h1>
+    <br>
+    <table class="table table-hover table-info">
+      <tr>
+        <th style="color:grey;">Interfaces</th>
+        <th style="color:blue;">rx_unicast</th>
+        <th style="color:blue;">rx_octets</th>
+        <th style="color:blue;">rx_broadcast</th>
+        <th style="color:blue;">rx_multicast</th>
+        <th style="color:blue;">rx_errors</th>
+        <th style="color:green;">tx_unicast</th>
+        <th style="color:green;">tx_octets</th>
+        <th style="color:green;">tx_broadcast</th>
+        <th style="color:green;">tx_multicast</th>
+        <th style="color:green;">tx_errors</th>
+        <th style="color:green;">tx_discards</th>
+
+      </tr>
+      {% for k, v in ios_output2.items() %}
+      <tr>
+
+        <td style="color:grey;"> <b> {{ k }} </b></td>
+        <td>{{ v['rx_unicast_packets'] }}</td>
+        <td>{{ v['rx_octets'] }}</td>
+        <td>{{ v['rx_broadcast_packets'] }}</td>
+        <td>{{ v['rx_multicast_packets'] }}</td>
+        <td>{{ v['rx_errors'] }}</td>
+        <td>{{ v['tx_unicast_packets'] }}</td>
+        <td>{{ v['tx_octets'] }}</td>
+        <td>{{ v['tx_broadcast_packets'] }}</td>
+        <td>{{ v['tx_multicast_packets'] }}</td>
+        <td>{{ v['tx_errors'] }}</td>
+        <td>{{ v['tx_discards'] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}

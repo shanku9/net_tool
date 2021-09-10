@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block title %} IpLookup {% endblock %}
+
+
+{% block body %}
+<div class="container">
+  <form action="{{url_for('ipfinder')}}" method="post">
+
+    <div class="form-group">
+
+      <input type="text" name="search" class="form-control" placeholder="Enter IP Address">
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Search">
+  </form>
+
+  <br>
+  <br>
+
+
+  <div class="d-block p-2 bg-primary text-white">
+    <div class="row">
+      <div class="col align-self-start">
+
+        <p style="color:black;"><b>IP Address is : {{data.ip}}</b></p>
+        <p style="color:black;"><b>City Location is : {{data.city}}</b></p>
+        <p style="color:black;"><b>IP Country is : {{data.country}}</b></p>
+        <p style="color:black;"><b>Available Language is : {{data.languages}}</b></p>
+
+        <p style="color:black;"><b>Latitude Information Is : {{data.latitude}}</b></p>
+        <p style="color:black;"><b>Longitude Information Is : {{data.longitude}}</b></p>
+      </div>
+
+      <div class="col align-self-end">
+        <p style="color:black;"><b>Time Zone Information Is : {{data.timezone}}</b></p>
+        <p style="color:black;"><b>Availble Calling Code : {{data.country_calling_code}}</b></p>
+        <p style="color:black;"><b>Available Currency Is : {{data.currency}}</b></p>
+        <p style="color:black;"><b>Internet Network Is : {{data.org}}</b></p>
+        <p style="color:black;"><b>Continent Code Is : {{data.continent_code}}</b></p>
+        <p style="color:black;"><b>Postal Code Is : {{data.postal}}</b></p>
+        <p style="color:black;"><b>UTC Offset Is : {{data.utc_offset}}</b></p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+<title>SaveConfig</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+
+{% block body %}
+<h3 style="color:blue;">Save Show Command Output</h3>
+
+<div class="p-3 mb-2 bg-info text-dark">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <h4 style="color:red;">Save ShowCommand(by Group) Output to TextFile</h4><br>
+    <h5 style="color:green;">* Example: show ip int brief</h5><br>
+
+    <ol class="breadcrumb">
+
+      <form action="{{url_for('saveshowcommand')}}" method="POST">
+        <input type="text" name="group" placeholder="Groupname">
+        <input type="text" name="command" placeholder="Showcommand">
+        <button class="badge rounded-pill bg-info text-dark" type="submit">RunShowByGroup</button>
+        <br>
+        <br>
+        <ol>
+          <li style="color:red;"><b>Devices Fail to Run Command: {{results}}</b></li>
+          <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+        </ol>
+
+      </form>
+
+    </ol>
+  </nav>
+</div>
+
+
+  <div class="p-3 mb-2 bg-info text-dark">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <h4 style="color:red;">Save ShowCommand(by Name) Output to TextFile</h4><br>
+      <h5 style="color:green;">* Example: show ip int brief</h5><br>
+
+      <ol class="breadcrumb">
+
+        <form action="{{url_for('saveshowcommand1')}}" method="POST">
+          <input type="text" name="group1" placeholder="Name">
+          <input type="text" name="command1" placeholder="Showcommand">
+          <button class="badge rounded-pill bg-info text-dark" type="submit">RunShowByName</button>
+          <br>
+          <br>
+          <ol>
+            <li style="color:red;"><b>Device Fail to Run Command: {{results}}</b></li>
+            <li style="color:red;"><b>Device Failure: {{l}}</b></li>
+          </ol>
+        </form>
+
+      </ol>
+    </nav>
+  </div>
+
+</div>
+<br>
+<div class="bd-example" align="middle">
+
+  <img src="/static/network2.png">
+
+</div>
+
+
+
+{% endblock %}

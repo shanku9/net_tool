@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+<title>SaveConfig</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+{% block body %}
+<h2 style="color:blue;">Save Configuration</h2>
+
+<br>
+<div class="p-3 mb-2 bg-info text-dark">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <h4>Save Run Configs to Startup, Group of Devices  </h4>
+        <ol class="breadcrumb">
+            <form action="{{url_for('configsave')}}" method="POST">
+
+                <input type="text" name="group" placeholder="GroupName">
+                <input type="text" name="command" placeholder="CommandForCommit">
+                <button class="badge rounded-pill bg-info text-dark" type="submit">CommitRunConfig</button>
+                <br>
+                <br>
+                <h5>*Example for Cisco commit command <b>'write mem' </b></h5>
+                <br>
+                <ol>
+                    <li style="color:red;"><b>Devices Fail to Run Command: {{results}}</b></li>
+                    <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+            </form>
+
+        </ol>
+    </nav>
+
+</div>
+
+<br>
+<div class="bd-example" align="middle">
+
+    <img src="/static/network3.png">
+
+</div>
+
+
+{% endblock %}

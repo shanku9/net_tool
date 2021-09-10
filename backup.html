@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+<title>Backup</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  textarea
+{
+border:8px solid #8d8cde;
+width:100%;
+margin:5px 0;
+padding:3px;
+color: #ba0707
+
+}
+  </style>
+
+
+
+{% block body %}
+
+<h2 style="color:green;">Backup Configuration</h2>
+<br>
+<div class="p-3 mb-2 bg-info text-dark">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <h5>BackUp Running Config By Group</h5>
+        <h6>Saving Text File to App dir.</h6><br>
+        <ol class="breadcrumb">
+
+            <form action="{{url_for('backup')}}" method="POST">
+
+                <input type="text" name="backup" placeholder="BackupGroup">
+
+                <button class="badge rounded-pill bg-info text-dark" type="submit">Backupgroup</button>
+                <br>
+                <br>
+                <ol>
+                    <li style="color:red;"><b>Devices Fail Backup Configs: {{results}}</b></li>
+                    <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+                </ol>
+            </form>
+
+        </ol>
+    </nav>
+
+
+
+</div>
+
+<br>
+
+<h2 style="color:green;">Backup Configuration By Command</h2>
+<br>
+<div class="p-3 mb-2 bg-info text-dark">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <h5>BackUp Running Config By Group</h5>
+        <h6>Saving Text File to App dir.</h6><br>
+        <h6>*Example Command: show running-config</h6><br>
+        <ol class="breadcrumb">
+
+            <form action="{{url_for('backup1')}}" method="POST">
+
+                <input type="text" name="backup1" placeholder="BackupGroup">
+                <input type="text" name="command1" placeholder="Command">
+                <button class="badge rounded-pill bg-info text-dark" type="submit">BackupConfig</button>
+                <br>
+                <br>
+                <ol>
+                    <li style="color:red;"><b>Devices Fail Backup Configs: {{results}}</b></li>
+                    <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+                </ol>
+            </form>
+
+        </ol>
+    </nav>
+
+
+
+</div>
+
+
+
+
+
+<div class="bd-example" align="middle">
+
+    <img src="/static/network1.png">
+
+</div>
+
+
+
+{% endblock %}

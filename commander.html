@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<title>CommandExe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+{% block body %}
+<h2 style="color:blue;"> Command OutPut</h2>
+
+<div class="p-3 mb-2 bg-info text-dark">
+    <form action=" {{url_for('commander')}}" method="POST">
+
+        <input type="text" name="name" class="btn btn-light" placeholder="name" >
+        <input type="text" name="command" class="btn btn-light" placeholder="Command">
+
+        <br>
+        <br>
+        <button class="badge rounded-pill bg-info text-dark" type="submit">Execute</button>
+        <ol>
+            <li style="color:red;"><b>Devices Fail to Run Command: {{results}}</b></li>
+            <li style="color:red;"><b>Total Device Failures: {{l}}</b></li>
+        </ol>
+        <textarea class="table table-bordered border-primary" id="w3review"  name="textbox" rows="15" cols="100">{{ z }}</textarea>
+
+    </form>
+
+
+</div>
+{% endblock %}

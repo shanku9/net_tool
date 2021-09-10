@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+{% block body %}
+
+<br>
+<h3 style="color:blue;">IPAddresses </h3>
+<div class="p-3 mb-2 bg-info text-dark" >
+
+  <form action="{{url_for('ipaddr')}}" method="POST">
+    <br>
+    <input type="text" name="ip" placeholder="IpAddress/submask24-30" >
+    <button class="badge rounded-pill bg-info text-dark" type="submit">OK</button>
+    <br>
+    <br>
+    <h5 style="color:green;"> <b> IPDetail</b></h5>
+  </form>
+  <br>
+  <ol>
+
+    {%for i in range(0, len)%}
+
+    <li style="color:blue;"><b>{{p[i]}}</b></li>
+    {%endfor%}
+
+  </ol>
+
+
+
+</div>
+
+{% endblock %}

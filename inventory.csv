@@ -1,0 +1,4 @@
+name,hostname,platform,port,username,password,secret,groups,secret
+CSR1000v,ios-xe-mgmt.cisco.com,ios,8181,developer,C1sco12345,,cisco__cisco1,,
+Gns3,192.168.18.87,ios,22,cisco,cisco,cisco,juniper,,
+NXS,sbx-nxos-mgmt.cisco.com,ios,8181,admin,Admin_1234!,,cisco,,
